@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    {% if form_notifications %}
+    <ul>
+        {% for notification in form_notifications %}
+        <li>{{ notification }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% if form_errors %}
+    <ul>
+        {% for error in form_errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+        <h1>Регистрация пользователя</h1>
+        <form method="POST" action="{{ url_for('login1') }}">
+        {{ form.csrf_token }}
+        <p>
+        {{ form.username.label }}<br>
+        {{ form.username(size=32) }}
+        </p>
+        <p>
+        {{ form.email.label }}<br>
+        {{ form.email(size=32) }}
+        </p>
+        <p>
+        {{ form.password.label }}<br>
+        {{ form.password(size=32) }}
+        </p>
+
+        <p>
+        <input type="submit" value="Регистрация">
+        </p>
+        </form>
+
+</body>
+</html>
