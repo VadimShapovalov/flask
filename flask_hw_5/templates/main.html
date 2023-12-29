@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+</head>
+<body>
+    <h1>Книги:</h1>
+    {% for book in books %}
+    <div style="background-color: rgb(218 224 101); margin:0.5em; padding: 0.25em; border-radius: 5px;">
+        <p><h2>Название: {{ book.name }}</h2></p>
+        <p><b>Автор: {{ book.author }}</b></p>
+        {% if book.description %}
+        <div>
+            Описание: {{ book.description }}
+        </div>
+        {% endif %}
+        <p><i>Жанр: {{ book.genre }}</i></p>
+        <a href="/books/{{ book.id }}"><h3>Перейти</h3></a>
+    </div>
+    {% endfor %}
+</body>
+</html>
