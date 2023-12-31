@@ -29,7 +29,7 @@ books: list[Book] = [type_adapter.validate_python(book) for book in json_data]
 
 async def commit_changes():
     async with aiofiles.open(json_file, 'w', encoding='utf-8') as f:
-        json_book = [song.model_dump(mode='json') for song in books]
+        json_book = [book.model_dump(mode='json') for book in books]
         content = json.dumps(json_book, ensure_ascii=False, indent=2)
         await f.write(content)
 
